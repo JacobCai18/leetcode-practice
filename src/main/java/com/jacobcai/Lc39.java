@@ -1,9 +1,6 @@
 package com.jacobcai;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 public class Lc39 {
     private int[] candidates;
@@ -12,23 +9,24 @@ public class Lc39 {
     private int len;
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        this.candidates = candidates;
         len = candidates.length;
         res = new ArrayList<>();
         deque = new ArrayDeque<>();
+        Arrays.sort(candidates);
+        this.candidates = candidates;
         backtrack(0, target);
         return res;
     }
 
     private void backtrack(int index, int target) {
-        if (target < 0) {
-            return;
-        }
         if (target == 0) {
             res.add(new ArrayList<>(deque));
             return;
         }
         for (int i = index; i < len; i++) {
+            if (target - candidates[i] < 0) {
+                break;
+            }
             deque.addLast(candidates[i]);
             backtrack(i, target - candidates[i]);
             deque.removeLast();
