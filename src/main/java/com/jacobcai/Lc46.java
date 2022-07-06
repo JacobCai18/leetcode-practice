@@ -26,13 +26,14 @@ public class Lc46 {
             return;
         }
         for (int i = 0; i < len; i++) {
-            if (!visited[i]) {
-                deque.addLast(nums[i]);
-                visited[i] = true;
-                backtrack(nums, curr + 1);
-                deque.removeLast();
-                visited[i] = false;
+            if (visited[i]) {
+                continue;
             }
+            deque.addLast(nums[i]);
+            visited[i] = true;
+            backtrack(nums, curr + 1);
+            deque.removeLast();
+            visited[i] = false;
         }
     }
 
