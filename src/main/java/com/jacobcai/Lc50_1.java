@@ -18,7 +18,7 @@ public class Lc50_1 {
 
     public static void main(String[] args) {
         double x = 2.00000;
-        int n = Integer.MIN_VALUE;
+        int n = 10;
         Lc50_1 lc50_1 = new Lc50_1();
         double res = lc50_1.myPow(x, n);
         System.out.println("res = " + res);
