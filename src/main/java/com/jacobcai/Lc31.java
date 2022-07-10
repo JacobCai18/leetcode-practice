@@ -8,16 +8,19 @@ public class Lc31 {
         if (n == 1) {
             return;
         }
+        // 从后向前找到第一个比前一个小的数
         int i = n - 2;
         for (; i >= 0; i--) {
             if (nums[i] < nums[i + 1]) {
                 break;
             }
         }
+        // 若数组降序，则翻转
         if (i == -1) {
             reverse(nums, 0, n - 1);
             return;
         }
+        // 从后向前找第一个比nums[i]大的数
         int j = n - 1;
         for (; j >= i; j--) {
             if (nums[j] > nums[i]) {
