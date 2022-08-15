@@ -11,14 +11,16 @@ public class Lc03 {
         for (int right = 0; right < len; right++) {
             // map中有重复的right所指的字符，定位left只增不减
             char c = s.charAt(right);
-            left = Math.max(left, map[c]);
+            left = Math.max(left,
+                            map[c]);
             // 若有重复的key，会覆盖val
             map[c] = right + 1;
-            maxLen = Math.max(maxLen, right - left + 1);
+            maxLen = Math.max(maxLen,
+                              right - left + 1);
         }
         return maxLen;
     }
-
+    
     public static void main(String[] args) {
         String s = "pwwkew";
         Lc03 lc03 = new Lc03();

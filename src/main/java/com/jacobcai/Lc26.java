@@ -13,7 +13,7 @@ public class Lc26 {
         }
         return slow + 1;
     }
-
+    
     public static void main(String[] args) {
         int[] nums = {1, 1, 2};
         Lc26 lc26 = new Lc26();

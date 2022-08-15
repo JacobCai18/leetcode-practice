@@ -1,7 +1,7 @@
 package com.jacobcai;
 
 public class Lc13 {
-
+    
     public int romanToInt(String s) {
         if (s.length() == 1) {
             return getValue(s.charAt(0));
@@ -18,7 +18,7 @@ public class Lc13 {
         }
         return ans;
     }
-
+    
     private int getValue(char ch) {
         return switch (ch) {
             case 'I' -> 1;
@@ -31,7 +31,7 @@ public class Lc13 {
             default -> 0;
         };
     }
-
+    
     public static void main(String[] args) {
         String s = "MCMXCIV";
         Lc13 solution = new Lc13();

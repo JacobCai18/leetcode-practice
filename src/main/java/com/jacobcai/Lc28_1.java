@@ -1,7 +1,8 @@
 package com.jacobcai;
 
 public class Lc28_1 {
-    public int strStr(String haystack, String needle) {
+    public int strStr(String haystack,
+                      String needle) {
         int n = haystack.length(), m = needle.length();
         for (int i = 0; i + m <= n; i++) {
             boolean flag = true;
@@ -18,12 +19,13 @@ public class Lc28_1 {
         }
         return -1;
     }
-
+    
     public static void main(String[] args) {
         String haystack = "hello";
         String needle = "ll";
         Lc28_1 lc28_1 = new Lc28_1();
-        int res = lc28_1.strStr(haystack, needle);
+        int res = lc28_1.strStr(haystack,
+                                needle);
         System.out.println("res = " + res);
     }
 }

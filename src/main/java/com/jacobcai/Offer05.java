@@ -5,7 +5,7 @@ public class Offer05 {
         Offer05 repS = new Offer05();
         System.out.println(repS.replaceSpace("We are happy."));
     }
-
+    
     public String replaceSpace(String s) {
         int len = s.length();
         String replace = "%20";

@@ -21,13 +21,14 @@ public class Lc32_1 {
                     // push最后一个没有被匹配的')'的下标
                     stack.push(i);
                 } else {
-                    res = Math.max(res, i - stack.peek());
+                    res = Math.max(res,
+                                   i - stack.peek());
                 }
             }
         }
         return res;
     }
-
+    
     public static void main(String[] args) {
         String s = ")()())";
         Lc32_1 lc32_1 = new Lc32_1();

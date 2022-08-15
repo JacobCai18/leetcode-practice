@@ -1,7 +1,8 @@
 package com.jacobcai;
 
 public class Lc06 {
-    public String convert(String s, int numRows) {
+    public String convert(String s,
+                          int numRows) {
         if (numRows == 1) {
             return s;
         }
@@ -27,12 +28,13 @@ public class Lc06 {
         }
         return res.toString();
     }
-
+    
     public static void main(String[] args) {
         String s = "PAYPALISHIPING";
         int numRows = 3;
         Lc06 lc06 = new Lc06();
-        String res = lc06.convert(s, numRows);
+        String res = lc06.convert(s,
+                                  numRows);
         System.out.println("res = " + res);
     }
 }

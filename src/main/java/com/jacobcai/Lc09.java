@@ -18,7 +18,7 @@ public class Lc09 {
         // 若x偶，需x == y; 若x奇，需x == y / 10
         return x == y || x == y / 10;
     }
-
+    
     public static void main(String[] args) {
         int x = 1234321;
         Lc09 lc09 = new Lc09();

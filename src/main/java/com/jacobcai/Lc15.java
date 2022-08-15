@@ -33,7 +33,9 @@ public class Lc15 {
             while (j < k) {
                 int curr = nums[i] + nums[j] + nums[k];
                 if (curr == 0) {
-                    res.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    res.add(Arrays.asList(nums[i],
+                                          nums[j],
+                                          nums[k]));
                     // 去到下一个不重复的j
                     while (j < k && nums[j] == nums[j + 1]) {
                         j++;
@@ -53,7 +55,7 @@ public class Lc15 {
         }
         return res;
     }
-
+    
     public static void main(String[] args) {
         int[] nums = {-1, 0, 1, 2, -1, -4};
         Lc15 lc15 = new Lc15();

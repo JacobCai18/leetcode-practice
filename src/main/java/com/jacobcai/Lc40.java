@@ -7,18 +7,21 @@ public class Lc40 {
     int len;
     List<List<Integer>> res;
     Deque<Integer> deque;
-
-    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+    
+    public List<List<Integer>> combinationSum2(int[] candidates,
+                                               int target) {
         len = candidates.length;
         res = new ArrayList<>();
         deque = new ArrayDeque<>(len);
         Arrays.sort(candidates);
         this.candidates = candidates;
-        backtrack(0, target);
+        backtrack(0,
+                  target);
         return res;
     }
-
-    private void backtrack(int index, int target) {
+    
+    private void backtrack(int index,
+                           int target) {
         if (target == 0) {
             res.add(new ArrayList<>(deque));
             return;
@@ -32,16 +35,18 @@ public class Lc40 {
                 continue;
             }
             deque.addLast(candidates[i]);
-            backtrack(i + 1, target - candidates[i]);
+            backtrack(i + 1,
+                      target - candidates[i]);
             deque.removeLast();
         }
     }
-
+    
     public static void main(String[] args) {
         int[] candidates = {10, 1, 2, 7, 6, 1, 5};
         int target = 8;
         Lc40 lc40 = new Lc40();
-        List<List<Integer>> res = lc40.combinationSum2(candidates, target);
+        List<List<Integer>> res = lc40.combinationSum2(candidates,
+                                                       target);
         System.out.println("res = " + res);
     }
 }

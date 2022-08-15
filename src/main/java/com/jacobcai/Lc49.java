@@ -12,14 +12,16 @@ public class Lc49 {
             // key
             String key = new String(charArray);
             // value
-            List<String> list = map.getOrDefault(key, new ArrayList<>());
+            List<String> list = map.getOrDefault(key,
+                                                 new ArrayList<>());
             list.add(str);
             // put
-            map.put(key, list);
+            map.put(key,
+                    list);
         }
         return new ArrayList<>(map.values());
     }
-
+    
     public static void main(String[] args) {
         String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
         Lc49 lc49 = new Lc49();

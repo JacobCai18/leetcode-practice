@@ -11,17 +11,19 @@ public class Lc11 {
             int curr;
             if (height[left] < height[right]) {
                 curr = height[left] * (right - left);
-                res = Math.max(res, curr);
+                res = Math.max(res,
+                               curr);
                 left++;
             } else {
                 curr = height[right] * (right - left);
-                res = Math.max(res, curr);
+                res = Math.max(res,
+                               curr);
                 right--;
             }
         }
         return res;
     }
-
+    
     public static void main(String[] args) {
         int[] height = {1, 8, 6, 2, 5, 4, 8, 3, 7};
         Lc11 lc11 = new Lc11();

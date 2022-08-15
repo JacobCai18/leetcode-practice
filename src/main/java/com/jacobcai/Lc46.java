@@ -10,17 +10,19 @@ public class Lc46 {
     private Deque<Integer> deque;
     private boolean[] visited;
     private int len;
-
+    
     public List<List<Integer>> permute(int[] nums) {
         res = new ArrayList<>();
         len = nums.length;
         deque = new ArrayDeque<>(len);
         visited = new boolean[len];
-        backtrack(nums, 0);
+        backtrack(nums,
+                  0);
         return res;
     }
-
-    private void backtrack(int[] nums, int curr) {
+    
+    private void backtrack(int[] nums,
+                           int curr) {
         if (curr == len) {
             res.add(new ArrayList<>(deque));
             return;
@@ -31,12 +33,13 @@ public class Lc46 {
             }
             deque.addLast(nums[i]);
             visited[i] = true;
-            backtrack(nums, curr + 1);
+            backtrack(nums,
+                      curr + 1);
             deque.removeLast();
             visited[i] = false;
         }
     }
-
+    
     public static void main(String[] args) {
         int[] nums = {1, 2, 3};
         Lc46 lc46 = new Lc46();

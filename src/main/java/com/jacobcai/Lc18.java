@@ -5,7 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Lc18 {
-    public List<List<Integer>> fourSum(int[] nums, int target) {
+    public List<List<Integer>> fourSum(int[] nums,
+                                       int target) {
         List<List<Integer>> res = new ArrayList<>();
         int len = nums.length;
         if (len < 4) {
@@ -36,7 +37,10 @@ public class Lc18 {
                 while (c < d) {
                     int curr = nums[a] + nums[b] + nums[c] + nums[d];
                     if (curr == target) {
-                        res.add(Arrays.asList(nums[a], nums[b], nums[c], nums[d]));
+                        res.add(Arrays.asList(nums[a],
+                                              nums[b],
+                                              nums[c],
+                                              nums[d]));
                         while (c < d && nums[c] == nums[c + 1]) {
                             c++;
                         }
@@ -55,12 +59,13 @@ public class Lc18 {
         }
         return res;
     }
-
+    
     public static void main(String[] args) {
-        int[] nums = {2,2,2,2,2};
+        int[] nums = {2, 2, 2, 2, 2};
         int target = 8;
         Lc18 lc18 = new Lc18();
-        List<List<Integer>> res = lc18.fourSum(nums, target);
+        List<List<Integer>> res = lc18.fourSum(nums,
+                                               target);
         System.out.println(res);
     }
 }

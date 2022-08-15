@@ -17,7 +17,9 @@ public class Lc31 {
         }
         // 若数组降序，则翻转
         if (i == -1) {
-            reverse(nums, 0, n - 1);
+            reverse(nums,
+                    0,
+                    n - 1);
             return;
         }
         // 从后向前找第一个比nums[i]大的数
@@ -27,24 +29,34 @@ public class Lc31 {
                 break;
             }
         }
-        swap(nums, i, j);
-        reverse(nums, i + 1, n - 1);
+        swap(nums,
+             i,
+             j);
+        reverse(nums,
+                i + 1,
+                n - 1);
     }
-
-    private void swap(int[] nums, int i, int j) {
+    
+    private void swap(int[] nums,
+                      int i,
+                      int j) {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
     }
-
-    private void reverse(int[] nums, int i, int j) {
+    
+    private void reverse(int[] nums,
+                         int i,
+                         int j) {
         while (i < j) {
-            swap(nums, i, j);
+            swap(nums,
+                 i,
+                 j);
             i++;
             j--;
         }
     }
-
+    
     public static void main(String[] args) {
         int[] nums = {1, 2, 4, 3, 6, 5, 2};
         Lc31 lc31 = new Lc31();

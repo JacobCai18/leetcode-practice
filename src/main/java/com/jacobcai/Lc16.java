@@ -3,7 +3,8 @@ package com.jacobcai;
 import java.util.Arrays;
 
 public class Lc16 {
-    public int threeSumClosest(int[] nums, int target) {
+    public int threeSumClosest(int[] nums,
+                               int target) {
         int res = 0;
         int gap = Integer.MAX_VALUE;
         int len = nums.length;
@@ -52,12 +53,13 @@ public class Lc16 {
         }
         return res;
     }
-
+    
     public static void main(String[] args) {
         int[] nums = {-1, 2, 1, -4};
         int target = 1;
         Lc16 lc16 = new Lc16();
-        int res = lc16.threeSumClosest(nums, target);
+        int res = lc16.threeSumClosest(nums,
+                                       target);
         System.out.println(res);
     }
 }

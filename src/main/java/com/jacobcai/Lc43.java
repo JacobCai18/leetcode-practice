@@ -1,7 +1,8 @@
 package com.jacobcai;
 
 public class Lc43 {
-    public String multiply(String num1, String num2) {
+    public String multiply(String num1,
+                           String num2) {
         if (num1.equals("0") || num2.equals("0")) {
             return "0";
         }
@@ -24,18 +25,21 @@ public class Lc43 {
         }
         StringBuilder res = new StringBuilder();
         // 判断首位是否为0
-        int k = resArr[0] == 0 ? 1 : 0;
+        int k = resArr[0] == 0 ?
+                1 :
+                0;
         for (; k < m + n; k++) {
             res.append(resArr[k]);
         }
         return res.toString();
     }
-
+    
     public static void main(String[] args) {
         String num1 = "1234";
         String num2 = "567";
         Lc43 lc43 = new Lc43();
-        String res = lc43.multiply(num1, num2);
+        String res = lc43.multiply(num1,
+                                   num2);
         System.out.println("res = " + res);
     }
 }

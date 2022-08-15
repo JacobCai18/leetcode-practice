@@ -13,7 +13,7 @@ public class Lc07 {
         }
         return res;
     }
-
+    
     public static void main(String[] args) {
         int x = 123;
         Lc07 lc07 = new Lc07();

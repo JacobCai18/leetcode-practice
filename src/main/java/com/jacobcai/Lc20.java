@@ -13,9 +13,12 @@ public class Lc20 {
             return false;
         }
         Map<Character, Character> map = new HashMap<>();
-        map.put(')', '(');
-        map.put('}', '{');
-        map.put(']', '[');
+        map.put(')',
+                '(');
+        map.put('}',
+                '{');
+        map.put(']',
+                '[');
         // stack
         Deque<Character> deque = new ArrayDeque<>();
         for (int i = 0; i < len; i++) {
@@ -33,7 +36,7 @@ public class Lc20 {
         }
         return deque.isEmpty();
     }
-
+    
     public static void main(String[] args) {
         String s = "()[]{}";
         Lc20 lc20 = new Lc20();
