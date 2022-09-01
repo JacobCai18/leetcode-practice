@@ -6,7 +6,8 @@ public class Lc55 {
         riMost = 0;
         for (int i = 0; i < (len = nums.length); i++) {
             if (i <= riMost) {
-                riMost = Math.max(riMost, i + nums[i]);
+                riMost = Math.max(riMost,
+                                  i + nums[i]);
                 if (riMost >= len - 1) {
                     return true;
                 }
