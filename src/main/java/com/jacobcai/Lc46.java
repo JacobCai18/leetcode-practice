@@ -22,8 +22,8 @@ public class Lc46 {
     }
     
     private void backtrack(int[] nums,
-                           int curr) {
-        if (curr == len) {
+                           int currLen) {
+        if (currLen == len) {
             res.add(new ArrayList<>(deque));
             return;
         }
@@ -34,7 +34,7 @@ public class Lc46 {
             deque.addLast(nums[i]);
             visited[i] = true;
             backtrack(nums,
-                      curr + 1);
+                      currLen + 1);
             deque.removeLast();
             visited[i] = false;
         }

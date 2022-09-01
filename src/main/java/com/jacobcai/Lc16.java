@@ -3,10 +3,13 @@ package com.jacobcai;
 import java.util.Arrays;
 
 public class Lc16 {
+    private int target, res, gap;
+    
     public int threeSumClosest(int[] nums,
                                int target) {
-        int res = 0;
-        int gap = Integer.MAX_VALUE;
+        res = 0;
+        gap = Integer.MAX_VALUE;
+        this.target = target;
         int len = nums.length;
         // 排序
         Arrays.sort(nums);
@@ -15,21 +18,15 @@ public class Lc16 {
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
+            int min, max;
             // 判断当前i下三数和的最小值
-            int min = nums[i] + nums[i + 1] + nums[i + 2];
-            if (min > target) {
-                if (gap > min - target) {
-                    res = min;
-                }
+            if ((min = nums[i] + nums[i + 1] + nums[i + 2]) > target) {
+                checkGap(min);
                 break;
             }
             // 判断当前i下三数和的最大值
-            int max = nums[i] + nums[len - 2] + nums[len - 1];
-            if (max < target) {
-                if (gap > target - max) {
-                    gap = target - max;
-                    res = max;
-                }
+            if ((max = nums[i] + nums[len - 2] + nums[len - 1]) < target) {
+                checkGap(max);
                 continue;
             }
             // j从前往后
@@ -37,21 +34,26 @@ public class Lc16 {
             // k从后往前
             int k = len - 1;
             while (j < k) {
-                int curr = nums[i] + nums[j] + nums[k];
-                if (curr == target) {
-                    return curr;
-                } else if (curr < target) {
+                int currSum;
+                if ((currSum = nums[i] + nums[j] + nums[k]) == target) {
+                    return currSum;
+                } else if (currSum < target) {
                     j++;
                 } else {
                     k--;
                 }
-                if (gap > Math.abs(curr - target)) {
-                    gap = Math.abs(curr - target);
-                    res = curr;
-                }
+                checkGap(currSum);
             }
         }
         return res;
+    }
+    
+    private void checkGap(int currSum) {
+        int currGap;
+        if (gap > (currGap = Math.abs(currSum - target))) {
+            gap = currGap;
+            res = currSum;
+        }
     }
     
     public static void main(String[] args) {

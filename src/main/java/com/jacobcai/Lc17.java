@@ -8,15 +8,15 @@ public class Lc17 {
     private static final String[] MAP = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
     private List<String> res;
     private StringBuilder sb;
-    private int digitsLen;
+    private int len;
     
     public List<String> letterCombinations(String digits) {
         res = new ArrayList<>();
-        digitsLen = digits.length();
-        if (digitsLen == 0) {
+        len = digits.length();
+        if (len == 0) {
             return res;
         }
-        sb = new StringBuilder(digitsLen);
+        sb = new StringBuilder(len);
         backtrack(digits,
                   0);
         return res;
@@ -24,7 +24,7 @@ public class Lc17 {
     
     private void backtrack(String digits,
                            int curr) {
-        if (curr == digitsLen) {
+        if (curr == len) {
             res.add(sb.toString());
             return;
         }

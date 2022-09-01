@@ -3,18 +3,17 @@ package com.jacobcai;
 public class Lc27 {
     public int removeElement(int[] nums,
                              int val) {
-        int left = 0;
-        int right = nums.length - 1;
+        int le = 0;
+        int ri = nums.length - 1;
         // 左右相等时仍要进入while
-        while (left <= right) {
-            if (nums[left] == val) {
-                nums[left] = nums[right];
-                right--;
+        while (le <= ri) {
+            if (nums[le] == val) {
+                nums[le] = nums[ri--];
             } else {
-                left++;
+                le++;
             }
         }
-        return left;
+        return le;
     }
     
     public static void main(String[] args) {

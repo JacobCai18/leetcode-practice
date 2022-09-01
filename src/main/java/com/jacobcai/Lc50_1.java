@@ -5,22 +5,21 @@ public class Lc50_1 {
     public double myPow(double x,
                         int n) {
         // 如果用int，n取Integer.MIN_VALUE时-n会越界
-        long N = n;
-        return N >= 0 ?
+        return n >= 0 ?
                quickMul(x,
-                        N) :
+                        n) :
                1.0 / quickMul(x,
-                              -N);
+                              -(long) n);
     }
     
     private double quickMul(double x,
-                            long N) {
-        if (N == 0) {
+                            long n) {
+        if (n == 0) {
             return 1.0;
         }
         double y = quickMul(x,
-                            N / 2);
-        return N % 2 == 0 ?
+                            n / 2);
+        return n % 2 == 0 ?
                y * y :
                y * y * x;
     }

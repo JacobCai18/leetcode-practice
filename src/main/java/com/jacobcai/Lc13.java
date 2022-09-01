@@ -1,26 +1,25 @@
 package com.jacobcai;
 
 public class Lc13 {
-    
     public int romanToInt(String s) {
         if (s.length() == 1) {
-            return getValue(s.charAt(0));
+            return getVal(s.charAt(0));
         }
         int p = s.length() - 2;
-        int ans = getValue(s.charAt(p + 1));
+        int res = getVal(s.charAt(p + 1));
         while (p > -1) {
-            if (getValue(s.charAt(p)) < getValue(s.charAt(p + 1))) {
-                ans -= getValue(s.charAt(p));
+            if (getVal(s.charAt(p)) < getVal(s.charAt(p + 1))) {
+                res -= getVal(s.charAt(p));
             } else {
-                ans += getValue(s.charAt(p));
+                res += getVal(s.charAt(p));
             }
             p--;
         }
-        return ans;
+        return res;
     }
     
-    private int getValue(char ch) {
-        return switch (ch) {
+    private int getVal(char c) {
+        return switch (c) {
             case 'I' -> 1;
             case 'V' -> 5;
             case 'X' -> 10;

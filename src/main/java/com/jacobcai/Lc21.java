@@ -6,8 +6,8 @@ import java.util.List;
 public class Lc21 {
     public ListNode mergeTwoLists(ListNode list1,
                                   ListNode list2) {
-        ListNode dummy = new ListNode();
-        ListNode prev = dummy;
+        ListNode prev, dummy;
+        prev = dummy = new ListNode();
         while (list1 != null && list2 != null) {
             // 根据两条链表头的值分类
             if (list1.val <= list2.val) {

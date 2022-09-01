@@ -2,12 +2,11 @@ package com.jacobcai;
 
 public class Lc05 {
     public String longestPalindrome(String s) {
-        int head = 0;
-        int tail = 0;
+        int le = 0;
+        int ri = 0;
         int len = 1;
         for (int i = 0; i < s.length(); i++) {
-            int len1 = 0;
-            int len2 = 0;
+            int len1, len2, curr;
             // 以一个char为中心
             len1 = expandFromMid(i,
                                  i,
@@ -16,34 +15,33 @@ public class Lc05 {
             len2 = expandFromMid(i,
                                  i + 1,
                                  s);
-            if (len < Math.max(len1,
-                               len2)) {
-                len = Math.max(len1,
-                               len2);
-                // 记录此时的头尾，便于return子串
-                tail = i + len / 2;
-                head = tail - len + 1;
+            if (len < (curr = Math.max(len1,
+                                       len2))) {
+                len = curr;
+                // 记录此时的左右，便于返回子串
+                ri = i + len / 2;
+                le = ri - len + 1;
             }
         }
-        // [head, tail + 1)
-        return s.substring(head,
-                           tail + 1);
+        // [le, ri + 1)
+        return s.substring(le,
+                           ri + 1);
     }
     
-    private int expandFromMid(int head,
-                              int tail,
+    private int expandFromMid(int le,
+                              int ri,
                               String s) {
         int len = 1;
-        while (head > -1 && tail < s.length() && s.charAt(head) == s.charAt(tail)) {
-            len = tail - head + 1;
-            head--;
-            tail++;
+        while (le > -1 && ri < s.length() && s.charAt(le) == s.charAt(ri)) {
+            len = ri - le + 1;
+            le--;
+            ri++;
         }
         return len;
     }
     
     public static void main(String[] args) {
-        String s = "babad";
+        String s = "bab";
         Lc05 lc05 = new Lc05();
         String res = lc05.longestPalindrome(s);
         System.out.println("res = " + res);

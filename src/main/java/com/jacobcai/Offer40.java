@@ -16,14 +16,14 @@ public class Offer40 {
     
     private int[] partition(int[] arr,
                             int k,
-                            int left,
-                            int right) {
-        int i = left, j = right;
+                            int le,
+                            int ri) {
+        int i = le, j = ri;
         while (i < j) {
-            while (i < j && arr[j] >= arr[left]) {
+            while (i < j && arr[j] >= arr[le]) {
                 j--;
             }
-            while (i < j && arr[i] <= arr[left]) {
+            while (i < j && arr[i] <= arr[le]) {
                 i++;
             }
             swap(arr,
@@ -31,19 +31,19 @@ public class Offer40 {
                  j);
         }
         swap(arr,
-             left,
+             le,
              i);
         if (i > k) {
             return partition(arr,
                              k,
-                             left,
+                             le,
                              i - 1);
         }
         if (i < k) {
             return partition(arr,
                              k,
                              i + 1,
-                             right);
+                             ri);
         }
         return Arrays.copyOf(arr,
                              k);

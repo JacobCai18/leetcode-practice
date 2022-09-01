@@ -20,8 +20,8 @@ public class Lc47 {
     }
     
     private void backtrack(int[] nums,
-                           int index) {
-        if (index == len) {
+                           int currLen) {
+        if (currLen == len) {
             res.add(new ArrayList<>(deque));
             return;
         }
@@ -29,21 +29,21 @@ public class Lc47 {
             if (visited[i]) {
                 continue;
             }
-            // nums[i - 1]刚刚被撤销选择
+            // nums[i - 1]刚刚被撤销选择，在同一层去到下一个不重复的数
             if (i > 0 && nums[i - 1] == nums[i] && !visited[i - 1]) {
                 continue;
             }
             deque.addLast(nums[i]);
             visited[i] = true;
             backtrack(nums,
-                      index + 1);
+                      currLen + 1);
             deque.removeLast();
             visited[i] = false;
         }
     }
     
     public static void main(String[] args) {
-        int[] nums = {2, 2, 1, 1};
+        int[] nums = {2, 2, 1, 1}; // 1, 1, 2, 2
         Lc47 lc47 = new Lc47();
         List<List<Integer>> res = lc47.permuteUnique(nums);
         System.out.println("res = " + res);

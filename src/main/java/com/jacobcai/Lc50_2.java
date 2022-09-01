@@ -4,26 +4,25 @@ public class Lc50_2 {
     // 快速幂+迭代
     public double myPow(double x,
                         int n) {
-        long N = n;
-        return N >= 0 ?
+        return n >= 0 ?
                quickMul(x,
-                        N) :
+                        n) :
                1.0 / quickMul(x,
-                              -N);
+                              -(long) n);
     }
     
     private double quickMul(double x,
-                            long N) {
+                            long n) {
         double res = 1.0;
         double x_contribute = x;
         // 对N进行二进制拆分
-        // e.g. 十进制10 == 二进制1010，x^10 == x^2^1 * x^2^3
-        while (N > 0) {
-            if (N % 2 == 1) {
+        // e.g. 十进制10 == 二进制1010，x^10 == (x^2)^1 * (x^2)^3
+        while (n > 0) {
+            if (n % 2 == 1) {
                 res *= x_contribute;
             }
             x_contribute *= x_contribute;
-            N /= 2;
+            n >>= 1;
         }
         return res;
     }

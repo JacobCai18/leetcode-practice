@@ -27,7 +27,8 @@ public class Lc40 {
             return;
         }
         for (int i = index; i < len; i++) {
-            if (target - candidates[i] < 0) {
+            int nextTar;
+            if ((nextTar = target - candidates[i]) < 0) {
                 break;
             }
             // 让同一层级不出现相同元素，允许不同层级之间重复
@@ -36,13 +37,13 @@ public class Lc40 {
             }
             deque.addLast(candidates[i]);
             backtrack(i + 1,
-                      target - candidates[i]);
+                      nextTar);
             deque.removeLast();
         }
     }
     
     public static void main(String[] args) {
-        int[] candidates = {10, 1, 2, 7, 6, 1, 5};
+        int[] candidates = {10, 1, 2, 7, 6, 1, 5}; // 1, 1, 2, 5, 6, 7, 10
         int target = 8;
         Lc40 lc40 = new Lc40();
         List<List<Integer>> res = lc40.combinationSum2(candidates,

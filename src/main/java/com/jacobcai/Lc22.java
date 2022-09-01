@@ -17,26 +17,26 @@ public class Lc22 {
         return strList;
     }
     
-    private void backtrack(int left,
-                           int right) {
-        if (left == n && right == n) {
+    private void backtrack(int le,
+                           int ri) {
+        if (le == n && ri == n) {
             strList.add(sb.toString());
             return;
         }
-        if (left < right) {
+        if (le < ri) {
             return;
         }
-        if (left < n) {
+        if (le < n) {
             sb.append('(');
-            backtrack(left + 1,
-                      right);
-            sb.deleteCharAt(left + right);
+            backtrack(le + 1,
+                      ri);
+            sb.deleteCharAt(le + ri);
         }
-        if (right < n) {
+        if (ri < n) {
             sb.append(')');
-            backtrack(left,
-                      right + 1);
-            sb.deleteCharAt(left + right);
+            backtrack(le,
+                      ri + 1);
+            sb.deleteCharAt(le + ri);
         }
     }
     

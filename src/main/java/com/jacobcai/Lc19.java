@@ -6,10 +6,9 @@ import java.util.List;
 public class Lc19 {
     public ListNode removeNthFromEnd(ListNode head,
                                      int n) {
-        ListNode dummy = new ListNode(0,
-                                      head);
-        ListNode slow = dummy;
-        ListNode fast = dummy;
+        ListNode slow, fast, dummy;
+        slow = fast = dummy = new ListNode(0,
+                                           head);
         for (int i = 0; i < n; i++) {
             fast = fast.next;
         }

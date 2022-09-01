@@ -27,12 +27,13 @@ public class Lc39 {
             return;
         }
         for (int i = index; i < len; i++) {
-            if (target - candidates[i] < 0) {
+            int nextTar;
+            if ((nextTar = target - candidates[i]) < 0) {
                 break;
             }
             deque.addLast(candidates[i]);
             backtrack(i,
-                      target - candidates[i]);
+                      nextTar);
             deque.removeLast();
         }
     }

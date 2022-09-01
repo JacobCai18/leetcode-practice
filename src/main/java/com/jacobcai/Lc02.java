@@ -6,9 +6,9 @@ import java.util.Deque;
 public class Lc02 {
     public ListNode addTwoNumbers(ListNode l1,
                                   ListNode l2) {
-        ListNode dummy = new ListNode();
-        ListNode tail = dummy;
+        ListNode dummy, tail;
         int carry = 0;
+        dummy = tail = new ListNode();
         while (l1 != null || l2 != null) {
             int n1 = l1 == null ?
                      0 :
@@ -17,15 +17,14 @@ public class Lc02 {
                      0 :
                      l2.val;
             int sum = n1 + n2 + carry;
-            tail.next = new ListNode(sum % 10);
-            tail = tail.next;
+            carry = sum / 10;
+            tail = tail.next = new ListNode(sum % 10);
             if (l1 != null) {
                 l1 = l1.next;
             }
             if (l2 != null) {
                 l2 = l2.next;
             }
-            carry = sum / 10;
         }
         if (carry == 1) {
             tail.next = new ListNode(1);

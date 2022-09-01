@@ -5,7 +5,7 @@ public class Lcp51 {
                            int[][] cookbooks,
                            int[][] attribute,
                            int limit) {
-        int ans = -1;
+        int res = -1;
         for (int i = 0; i < 1 << cookbooks.length; i++) {
             int[] sum = new int[5];
             int x = 0, y = 0;
@@ -26,11 +26,11 @@ public class Lcp51 {
                 }
             }
             if (flag) {
-                ans = Math.max(ans,
+                res = Math.max(res,
                                x);
             }
         }
-        return ans;
+        return res;
     }
     
     public static void main(String[] args) {
@@ -39,10 +39,10 @@ public class Lcp51 {
         int[][] attribute = {{5, 5}, {6, 6}, {10, 10}};
         int limit = 1;
         Lcp51 solutions = new Lcp51();
-        int ans = solutions.perfectMenu(materials,
+        int res = solutions.perfectMenu(materials,
                                         cookbooks,
                                         attribute,
                                         limit);
-        System.out.println(ans);
+        System.out.println(res);
     }
 }

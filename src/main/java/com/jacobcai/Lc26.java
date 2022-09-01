@@ -2,16 +2,15 @@ package com.jacobcai;
 
 public class Lc26 {
     public int removeDuplicates(int[] nums) {
-        int slow = 0;
-        int fast = 1;
-        while (fast < nums.length) {
-            if (nums[slow] != nums[fast]) {
-                slow++;
-                nums[slow] = nums[fast];
+        int le = 0;
+        int ri = 1;
+        while (ri < nums.length) {
+            if (nums[le] != nums[ri]) {
+                nums[++le] = nums[ri];
             }
-            fast++;
+            ri++;
         }
-        return slow + 1;
+        return le + 1;
     }
     
     public static void main(String[] args) {

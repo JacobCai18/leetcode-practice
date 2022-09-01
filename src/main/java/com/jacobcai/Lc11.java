@@ -4,21 +4,17 @@ public class Lc11 {
     public int maxArea(int[] height) {
         // 最大水量
         int res = 0;
-        int left = 0;
-        int right = height.length - 1;
-        while (left < right) {
-            // 当前水量
-            int curr;
-            if (height[left] < height[right]) {
-                curr = height[left] * (right - left);
+        int le = 0;
+        int ri = height.length - 1;
+        while (le < ri) {
+            if (height[le] < height[ri]) {
                 res = Math.max(res,
-                               curr);
-                left++;
+                               height[le] * (ri - le));
+                le++;
             } else {
-                curr = height[right] * (right - left);
                 res = Math.max(res,
-                               curr);
-                right--;
+                               height[ri] * (ri - le));
+                ri--;
             }
         }
         return res;

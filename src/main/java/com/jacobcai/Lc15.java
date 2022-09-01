@@ -31,8 +31,8 @@ public class Lc15 {
             // k从后往前
             int k = len - 1;
             while (j < k) {
-                int curr = nums[i] + nums[j] + nums[k];
-                if (curr == 0) {
+                int currSum;
+                if ((currSum = nums[i] + nums[j] + nums[k]) == 0) {
                     res.add(Arrays.asList(nums[i],
                                           nums[j],
                                           nums[k]));
@@ -46,7 +46,7 @@ public class Lc15 {
                         k--;
                     }
                     k--;
-                } else if (curr < 0) {
+                } else if (currSum < 0) {
                     j++;
                 } else {
                     k--;

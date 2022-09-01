@@ -7,17 +7,16 @@ public class Lc49 {
         Map<String, List<String>> map = new HashMap<>();
         for (String str : strs) {
             // 将String转化为char[]，方便Arrays.sort
-            char[] charArray = str.toCharArray();
-            Arrays.sort(charArray);
-            // key
-            String key = new String(charArray);
-            // value
-            List<String> list = map.getOrDefault(key,
-                                                 new ArrayList<>());
-            list.add(str);
-            // put
-            map.put(key,
-                    list);
+            char[] charArr;
+            String k;
+            List<String> v;
+            // 字母异位词排序后结果相同
+            Arrays.sort(charArr = str.toCharArray());
+            v = map.getOrDefault(k = new String(charArr),
+                                 new ArrayList<>());
+            v.add(str);
+            map.put(k,
+                    v);
         }
         return new ArrayList<>(map.values());
     }
