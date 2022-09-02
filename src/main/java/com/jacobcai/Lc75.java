@@ -6,12 +6,12 @@ public class Lc75 {
     public void sortColors(int[] nums) {
         int le, ri, i;
         le = i = 0;
-        ri = nums.length - 1;
+        ri = nums.length;
         // [0, le) == 0
         // [le, i) == 1
-        // [i, ri]
-        // (ri, nums.length - 1] == 2
-        while (i <= ri) {
+        // [i, ri)
+        // [ri, nums.length - 1] == 2
+        while (i < ri) {
             if (nums[i] == 0) {
                 swap(nums,
                      i++,
@@ -21,7 +21,7 @@ public class Lc75 {
             } else {
                 swap(nums,
                      i,
-                     ri--);
+                     --ri);
             }
         }
     }
