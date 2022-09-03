@@ -10,6 +10,7 @@ public class Lc97_1 {
         }
         // 从使用0个字母开始
         boolean[][] dp = new boolean[l1 + 1][l2 + 1];
+        // 确定初始状态
         dp[0][0] = true;
         for (int i = 1; i < l1 + 1; i++) {
             dp[i][0] = dp[i - 1][0] && s1.charAt(i - 1) == s3.charAt(i - 1);
@@ -17,6 +18,7 @@ public class Lc97_1 {
         for (int j = 1; j < l2 + 1; j++) {
             dp[0][j] = dp[0][j - 1] && s2.charAt(j - 1) == s3.charAt(j - 1);
         }
+        // 父问题借助子问题解决
         for (int i = 1; i < l1 + 1; i++) {
             for (int j = 1; j < l2 + 1; j++) {
                 dp[i][j] = dp[i - 1][j] && s1.charAt(i - 1) == s3.charAt(i + j - 1) ||
