@@ -2,8 +2,6 @@ package com.jacobcai.ci;
 
 import com.jacobcai.TreeNode;
 
-import java.util.List;
-
 public class Lc104 {
     public int maxDepth(TreeNode root) {
         if (root == null) {
