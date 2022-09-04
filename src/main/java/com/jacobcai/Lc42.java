@@ -5,32 +5,26 @@ import java.util.Deque;
 
 public class Lc42 {
     public int trap(int[] height) {
-        int len, res;
-        res = 0;
-        if ((len = height.length) < 3) {
-            return 0;
-        }
+        int res = 0;
         Deque<Integer> stack = new ArrayDeque<>();
-        for (int i = 0; i < len; i++) {
-            if (!stack.isEmpty() && height[i] < height[stack.peek()]) {
-                stack.push(i);
-            } else if (!stack.isEmpty() && height[i] == height[stack.peek()]) {
-                stack.pop();
-                stack.push(i);
-            } else if (!stack.isEmpty() && height[i] > height[stack.peek()]) {
-                int cur = stack.pop();
-                while (!stack.isEmpty() && height[stack.peek()] <= height[i]) {
-                    res += (height[stack.peek()] - height[cur]) * (i - stack.peek() - 1);
-                    cur = stack.pop();
+        for (int ri = 0; ri < height.length; ri++) {
+            while (!stack.isEmpty() && height[stack.peek()] < height[ri]) {
+                // res += height * length
+                // height = ceiling - floor
+                // ceiling = Math.min(height[ri], height[le])
+                // floor = height[floorIndex]
+                // length = ri - le - 1
+                int floorIndex = stack.pop();
+                // 需要有左边的柱子才能接水
+                if (stack.isEmpty()) {
+                    break;
                 }
-                if (!stack.isEmpty() && height[stack.peek()] > height[i]) {
-                    res += (height[i] - height[cur]) * (i - stack.peek() - 1);
-                }
-                stack.push(i);
+                int le = stack.peek();
+                res += (Math.min(height[ri],
+                                 height[le]) - height[floorIndex]) * (ri - le - 1);
             }
-            if (stack.isEmpty()) {
-                stack.push(i);
-            }
+            // 栈空||栈顶对应高度>=当前高度||栈顶对应高度<当前高度
+            stack.push(ri);
         }
         return res;
     }
