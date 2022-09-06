@@ -6,12 +6,14 @@ import java.util.Deque;
 import java.util.List;
 
 public class Lc131 {
-    List<List<String>> res = new ArrayList<>();
-    Deque<String> stack = new ArrayDeque<>();
+    List<List<String>> res;
+    Deque<String> stack;
     int len;
     boolean[][] dp;
     
     public List<List<String>> partition(String s) {
+        res = new ArrayList<>();
+        stack = new ArrayDeque<>();
         len = s.length();
         // dp[le][ri] == true: 当前le到ri的子串是回文串
         dp = new boolean[len][len];
