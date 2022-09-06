@@ -4,9 +4,6 @@ import com.jacobcai.ListNode;
 
 public class Lc141 {
     public boolean hasCycle(ListNode head) {
-        if (head == null) {
-            return false;
-        }
         // 快慢指针
         ListNode slow, fast;
         slow = fast = head;
