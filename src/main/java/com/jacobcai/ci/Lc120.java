@@ -6,6 +6,7 @@ import java.util.List;
 public class Lc120 {
     public int minimumTotal(List<List<Integer>> triangle) {
         int rowLen = triangle.size();
+        // dp[i][j]: 顶部到当前位置的最小路径和
         // dp[j] = Math.min(dp[j-1], dp[j]) + triangle[i][j]
         int[] dp = new int[rowLen];
         dp[0] = triangle.get(0).get(0);
