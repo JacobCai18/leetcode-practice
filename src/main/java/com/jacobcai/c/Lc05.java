@@ -32,7 +32,7 @@ public class Lc05 {
                               int ri,
                               String s) {
         int len = 1;
-        while (le > -1 && ri < s.length() && s.charAt(le) == s.charAt(ri)) {
+        while (le >= 0 && ri < s.length() && s.charAt(le) == s.charAt(ri)) {
             len = ri - le + 1;
             le--;
             ri++;
