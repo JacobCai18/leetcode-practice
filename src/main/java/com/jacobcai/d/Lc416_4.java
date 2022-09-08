@@ -18,10 +18,9 @@ public class Lc416_4 {
         boolean[] dp = new boolean[(tar = sum / 2) + 1];
         // 前0个数字能选出数字组合使数字总和恰好为0
         dp[0] = true;
-        for (int i = 1; i <= nums.length; i++) {
-            int num = nums[i - 1];
-            for (int j = tar; j >= 0; j--) {
-                dp[j] = dp[j] || (j - num >= 0 && dp[j - num]);
+        for (int num : nums) {
+            for (int j = tar; j >= num; j--) {
+                dp[j] |= dp[j - num];
                 if (dp[tar]) {
                     return true;
                 }
