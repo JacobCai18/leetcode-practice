@@ -12,7 +12,7 @@ public class Lc416 {
         if ((sum & 1) == 1) {
             return false;
         }
-        // dp[i][j]: 前i个数字，数字总和不超过j时的最大总和
+        // dp[i][j]: 前i+1个数字，数字总和不超过j时的最大总和
         // dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-nums[i]]+nums[i])
         int[][] dp = new int[len = nums.length][(tar = sum / 2) + 1];
         // 先处理考虑第 1 个数字的情况
