@@ -5,8 +5,8 @@ public class Lc416 {
         // tar: 「等和子集」的和
         int len, sum, tar;
         sum = 0;
-        for (int i : nums) {
-            sum += i;
+        for (int num : nums) {
+            sum += num;
         }
         // sum为奇数时nums不能被分为两个「等和子集」
         if ((sum & 1) == 1) {
