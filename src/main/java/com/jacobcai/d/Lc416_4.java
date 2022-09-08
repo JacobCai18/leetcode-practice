@@ -22,15 +22,18 @@ public class Lc416_4 {
             int num = nums[i - 1];
             for (int j = tar; j >= 0; j--) {
                 dp[j] = dp[j] || (j - num >= 0 && dp[j - num]);
+                if (dp[tar]) {
+                    return true;
+                }
             }
         }
-        return dp[tar];
+        return false;
     }
     
     public static void main(String[] args) {
         int[] nums = {1, 5, 11, 5};
-        Lc416_3 lc416_3 = new Lc416_3();
-        boolean res = lc416_3.canPartition(nums);
+        Lc416_4 lc416_4 = new Lc416_4();
+        boolean res = lc416_4.canPartition(nums);
         System.out.println("res = " + res);
     }
 }
