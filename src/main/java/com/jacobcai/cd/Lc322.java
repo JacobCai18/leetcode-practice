@@ -6,8 +6,8 @@ public class Lc322 {
     public int coinChange(int[] coins,
                           int amount) {
         // dp[i][j]: 前 i 种coin凑成 j 所需的最少个数
-        // dp[i][j] = Math.min(dp[i-1][j], dp[i-1][j-k*coins[i]]+k)
-        // dp[j] = Math.min(dp[j], dp[j-coins[i]]+1)
+        // dp[i][j] = Math.min(dp[i-1][j], dp[i-1][j-k*coins[i-1]]+k)
+        // dp[j] = Math.min(dp[j], dp[j-coins[i-1]]+1)
         int[] dp = new int[amount + 1];
         Arrays.fill(dp,
                     0x3f3f3f3f);
