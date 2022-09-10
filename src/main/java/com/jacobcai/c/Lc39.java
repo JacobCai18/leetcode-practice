@@ -39,8 +39,8 @@ public class Lc39 {
     }
     
     public static void main(String[] args) {
-        int[] candidates = {2, 3, 5};
-        int target = 8;
+        int[] candidates = {1, 2, 5};
+        int target = 5;
         Lc39 lc39 = new Lc39();
         List<List<Integer>> res = lc39.combinationSum(candidates,
                                                       target);
