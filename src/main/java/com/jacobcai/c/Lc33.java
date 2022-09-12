@@ -7,7 +7,7 @@ public class Lc33 {
         lo = 0;
         hi = nums.length - 1;
         while (lo <= hi) {
-            mid = lo + (hi - lo) / 2;
+            mid = (lo + hi) >>> 1;
             if (nums[mid] == target) {
                 return mid;
             }
