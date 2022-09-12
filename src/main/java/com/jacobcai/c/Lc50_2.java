@@ -18,7 +18,7 @@ public class Lc50_2 {
         // 对N进行二进制拆分
         // e.g. 十进制10 == 二进制1010，x^10 == (x^2)^1 * (x^2)^3
         while (n > 0) {
-            if (n % 2 == 1) {
+            if ((n & 1) == 1) {
                 res *= x_contribute;
             }
             x_contribute *= x_contribute;
