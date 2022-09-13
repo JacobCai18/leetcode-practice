@@ -38,9 +38,9 @@ public class Lc51_3 {
         int avaPos = ((1 << n) - 1) & (~(cols | dias1 | dias2));
         while (avaPos != 0) {
             // 获得最低位1的位置
-            int pos = avaPos & (-avaPos);
+            int pos = avaPos & -avaPos;
             // 将最低位的1置0
-            avaPos = avaPos & (avaPos - 1);
+            avaPos &= avaPos - 1;
             // 获得pos对应的列
             queens[row] = Integer.bitCount(pos - 1);
             backtrack(row + 1,
