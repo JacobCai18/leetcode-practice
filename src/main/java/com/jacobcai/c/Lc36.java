@@ -10,19 +10,19 @@ public class Lc36 {
                 if (board[i][j] == '.') {
                     continue;
                 }
-                int curNum;
+                int curNum, idx;
                 if (row[i][curNum = board[i][j] - '0'] == 1) {
                     return false;
                 }
                 if (col[j][curNum] == 1) {
                     return false;
                 }
-                if (box[j / 3 + (i / 3) * 3][curNum] == 1) {
+                if (box[idx = i / 3 * 3 + j / 3][curNum] == 1) {
                     return false;
                 }
                 row[i][curNum] = 1;
                 col[j][curNum] = 1;
-                box[j / 3 + (i / 3) * 3][curNum] = 1;
+                box[idx][curNum] = 1;
             }
         }
         return true;
