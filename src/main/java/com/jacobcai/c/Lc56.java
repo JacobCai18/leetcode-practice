@@ -13,9 +13,9 @@ public class Lc56 {
         le = intervals[0][0];
         ri = intervals[0][1];
         for (int i = 1; i < intervals.length; i++) {
-            int curLe, curRi;
-            curRi = intervals[i][1];
-            if (ri < (curLe = intervals[i][0])) {
+            int curLe = intervals[i][0];
+            int curRi = intervals[i][1];
+            if (ri < curLe) {
                 list.add(new int[]{le, ri});
                 le = curLe;
                 ri = curRi;
