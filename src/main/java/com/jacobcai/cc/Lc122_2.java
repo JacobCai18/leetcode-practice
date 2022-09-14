@@ -2,9 +2,8 @@ package com.jacobcai.cc;
 
 public class Lc122_2 {
     public int maxProfit(int[] prices) {
-        int len = prices.length;
         int res = 0;
-        for (int i = 1; i < len; i++) {
+        for (int i = 1; i < prices.length; i++) {
             // 今天价格比昨天高，昨天就买并今天卖出
             // 今天价格比昨天低，昨天就不买
             res += Math.max(prices[i] - prices[i - 1],
