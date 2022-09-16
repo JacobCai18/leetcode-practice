@@ -7,13 +7,14 @@ public class Lc80 {
             return len;
         }
         int le, ri;
-        le = ri = 2;
+        le = 0;
+        ri = 2;
         for (; ri < len; ri++) {
-            if (nums[ri] != nums[le - 2]) {
-                nums[le++] = nums[ri];
+            if (nums[le] != nums[ri]) {
+                nums[le++ + 2] = nums[ri];
             }
         }
-        return le;
+        return le + 2;
     }
     
     public static void main(String[] args) {
