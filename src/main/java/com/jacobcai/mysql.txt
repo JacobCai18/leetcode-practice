@@ -1,0 +1,12 @@
+docker compose up -d
+docker exec -it jacobcai-mysql-1 /bin/bash
+
+mysql -uroot -proot
+
+use lc;
+source *.sql;
+exit;
+
+exit
+
+docker compose down
