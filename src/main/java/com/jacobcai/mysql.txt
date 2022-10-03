@@ -1,9 +1,8 @@
 docker compose up -d
 docker exec -it jacobcai-mysql-1 /bin/bash
 
-mysql -uroot -proot
+mysql -uroot -proot lc
 
-use lc;
 source *.sql;
 exit;
 
