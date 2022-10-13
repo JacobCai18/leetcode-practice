@@ -5,21 +5,19 @@ public class Lc64 {
         int rowLen, colLen;
         rowLen = grid.length;
         colLen = grid[0].length;
-        int[][] dp = new int[rowLen][colLen];
-        dp[0][0] = grid[0][0];
-        for (int i = 1; i < rowLen; i++) {
-            dp[i][0] = grid[i][0] + dp[i - 1][0];
-        }
+        int[] dp = new int[colLen];
+        dp[0] = grid[0][0];
         for (int j = 1; j < colLen; j++) {
-            dp[0][j] = grid[0][j] + dp[0][j - 1];
+            dp[j] = grid[0][j] + dp[j - 1];
         }
         for (int i = 1; i < rowLen; i++) {
+            dp[0] += grid[i][0];
             for (int j = 1; j < colLen; j++) {
-                dp[i][j] = grid[i][j] + Math.min(dp[i - 1][j],
-                                                 dp[i][j - 1]);
+                dp[j] = grid[i][j] + Math.min(dp[j],
+                                              dp[j - 1]);
             }
         }
-        return dp[rowLen - 1][colLen - 1];
+        return dp[colLen - 1];
     }
     
     public static void main(String[] args) {
