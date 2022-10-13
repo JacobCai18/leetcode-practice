@@ -6,15 +6,18 @@ public class Lc64 {
         rowLen = grid.length;
         colLen = grid[0].length;
         int[] dp = new int[colLen];
-        dp[0] = grid[0][0];
-        for (int j = 1; j < colLen; j++) {
-            dp[j] = grid[0][j] + dp[j - 1];
-        }
-        for (int i = 1; i < rowLen; i++) {
-            dp[0] += grid[i][0];
-            for (int j = 1; j < colLen; j++) {
-                dp[j] = grid[i][j] + Math.min(dp[j],
-                                              dp[j - 1]);
+        for (int i = 0; i < rowLen; i++) {
+            for (int j = 0; j < colLen; j++) {
+                int min;
+                if (j == 0) {
+                    min = dp[j];
+                } else if (i == 0) {
+                    min = dp[j - 1];
+                } else {
+                    min = Math.min(dp[j],
+                                   dp[j - 1]);
+                }
+                dp[j] = grid[i][j] + min;
             }
         }
         return dp[colLen - 1];
