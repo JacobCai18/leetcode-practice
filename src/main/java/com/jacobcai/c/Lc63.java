@@ -2,23 +2,18 @@ package com.jacobcai.c;
 
 public class Lc63 {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        if (obstacleGrid[0][0] == 1) {
+            return 0;
+        }
         int rowLen, colLen;
         rowLen = obstacleGrid.length;
         int[] dp = new int[colLen = obstacleGrid[0].length];
-        dp[0] = obstacleGrid[0][0] == 0 ?
-                1 :
-                0;
-        if (dp[0] == 0) {
-            return 0;
-        }
+        dp[0] = 1;
         for (int i = 0; i < rowLen; i++) {
-            if (obstacleGrid[i][0] == 1) {
-                dp[0] = 0;
-            }
-            for (int j = 1; j < colLen; j++) {
+            for (int j = 0; j < colLen; j++) {
                 if (obstacleGrid[i][j] == 1) {
                     dp[j] = 0;
-                } else {
+                } else if (j > 0) {
                     dp[j] += dp[j - 1];
                 }
             }
