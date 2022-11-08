@@ -3,7 +3,7 @@ package com.jacobcai.c;
 import java.util.Arrays;
 
 public class Lc73 {
-    public void setZeros(int[][] matrix) {
+    public void setZeroes(int[][] matrix) {
         int rowLen, colLen;
         boolean[] row, col;
         rowLen = matrix.length;
@@ -29,7 +29,7 @@ public class Lc73 {
     public static void main(String[] args) {
         int[][] matrix = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
         Lc73 lc73 = new Lc73();
-        lc73.setZeros(matrix);
+        lc73.setZeroes(matrix);
         System.out.println("matrix = " + Arrays.deepToString(matrix));
     }
 }
