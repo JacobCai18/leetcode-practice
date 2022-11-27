@@ -3,8 +3,6 @@ package com.jacobcai.d;
 public class Lc424 {
     public int characterReplacement(String s,
                                     int k) {
-        // 包含相同字母的最长子字符串的长度
-        int maxLen = 0;
         // [le, ri)
         int le = 0;
         int ri = 0;
@@ -21,16 +19,14 @@ public class Lc424 {
             ri++;
             // 窗口左边移动的情况：用 k 替换非当前窗口出现个数最多的 char 后的子字符串长度 < 当前窗口长度
             // 当前窗口长度：ri - le
+            // 窗口长度想要更长时，需要 maxCount 增加
             if (maxCount + k < ri - le) {
                 // 将 le 上的 char 在 curr 上对应位置减去
                 curr[s.charAt(le) - 'A']--;
                 le++;
             }
-            // 记录 maxLen
-            maxLen = Math.max(maxLen,
-                              ri - le);
         }
-        return maxLen;
+        return ri - le;
     }
     
     public static void main(String[] args) {
