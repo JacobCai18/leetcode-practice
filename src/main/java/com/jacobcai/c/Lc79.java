@@ -3,23 +3,19 @@ package com.jacobcai.c;
 public class Lc79 {
     char[][] board;
     String word;
-    boolean[][] visited;
     boolean res;
     
     public boolean exist(char[][] board,
                          String word) {
         this.board = board;
         this.word = word;
-        visited = new boolean[board.length][board[0].length];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (board[i][j] == word.charAt(0)) {
-                    dfs(i,
-                        j,
-                        0);
-                    if (res) {
-                        return true;
-                    }
+                dfs(i,
+                    j,
+                    0);
+                if (res) {
+                    return true;
                 }
             }
         }
@@ -29,14 +25,16 @@ public class Lc79 {
     private void dfs(int i,
                      int j,
                      int index) {
-        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || visited[i][j] || board[i][j] != word.charAt(index)) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(index)) {
             return;
         }
         if (index == word.length() - 1) {
             res = true;
             return;
         }
-        visited[i][j] = true;
+        // 先沉岛后复原，可不用 visited
+        char tmp = board[i][j];
+        board[i][j] = '*';
         // 四个方向 dfs
         dfs(i,
             j + 1,
@@ -50,7 +48,7 @@ public class Lc79 {
         dfs(i - 1,
             j,
             index + 1);
-        visited[i][j] = false;
+        board[i][j] = tmp;
     }
     
     public static void main(String[] args) {
