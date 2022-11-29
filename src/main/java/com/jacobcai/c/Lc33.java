@@ -3,28 +3,25 @@ package com.jacobcai.c;
 public class Lc33 {
     public int search(int[] nums,
                       int target) {
-        int lo, hi, mid;
-        lo = 0;
-        hi = nums.length - 1;
-        while (lo <= hi) {
-            mid = (lo + hi) >>> 1;
+        int le, ri, mid;
+        le = 0;
+        ri = nums.length - 1;
+        while (le <= ri) {
+            mid = (le + ri) >>> 1;
             if (nums[mid] == target) {
                 return mid;
             }
-            // 前半部分有序
-            if (nums[lo] <= nums[mid]) {
-                // target在前半部分
-                if (nums[lo] <= target && target < nums[mid]) {
-                    hi = mid - 1;
-                } else {
-                    lo = mid + 1;
+            if (nums[le] <= nums[mid]) { // 前半部分有序
+                if (nums[le] <= target && target < nums[mid]) { // target 在前半部分
+                    ri = mid - 1;
+                } else { // target 在后半部分
+                    le = mid + 1;
                 }
             } else { // 后半部分有序
-                // target在后半部分
-                if (nums[mid] < target && target <= nums[hi]) {
-                    lo = mid + 1;
-                } else {
-                    hi = mid - 1;
+                if (nums[mid] < target && target <= nums[ri]) { // target 在后半部分
+                    le = mid + 1;
+                } else { // target 在前半部分
+                    ri = mid - 1;
                 }
             }
         }
