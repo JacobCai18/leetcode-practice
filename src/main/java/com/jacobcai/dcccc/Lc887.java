@@ -20,6 +20,7 @@ public class Lc887 {
         }
         for (int i = 2; i <= k; i++) {
             for (int j = 2; j <= n; j++) {
+                // 用二分确定在哪两层相邻的楼抛鸡蛋会获得确定楼层 f 确切值的最小操作数
                 int le = 1, ri = j;
                 while (le + 1 < ri) {
                     int x = (le + ri) >>> 1;
@@ -35,6 +36,9 @@ public class Lc887 {
                         ri = x;
                     }
                 }
+                // Math.max(dp[i - 1][x - 1], dp[i][j - x]): 在 x 层抛鸡蛋保证能确定楼层 f 确切值的操作数
+                // 在 [1, j] 层分别抛鸡蛋，保证能确定楼层 f 确切值的前提下，选取这些层中最小的操作数
+                // 由于已经二分查找，只需在 le 和 ri 这相邻的两层中选取最小的操作数
                 dp[i][j] = 1 + Math.min(Math.max(dp[i - 1][le - 1],
                                                  dp[i][j - le]),
                                         Math.max(dp[i - 1][ri - 1],
