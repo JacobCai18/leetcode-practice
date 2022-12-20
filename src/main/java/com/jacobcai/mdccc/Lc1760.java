@@ -10,16 +10,16 @@ public class Lc1760 {
         }
         int res = 0;
         while (le <= ri) {
-            int y = (le + ri) >>> 1;
+            int mid = (le + ri) >>> 1;
             long ops = 0;
             for (int num : nums) {
-                ops += (num - 1) / y;
+                ops += (num - 1) / mid;
             }
             if (ops <= maxOperations) {
-                res = y;
-                ri = y - 1;
+                res = mid;
+                ri = mid - 1;
             } else {
-                le = y + 1;
+                le = mid + 1;
             }
         }
         return res;
