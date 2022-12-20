@@ -1,14 +1,13 @@
 package com.jacobcai.mdccc;
 
-import java.util.Arrays;
-
 public class Lc1760 {
     public int minimumSize(int[] nums,
                            int maxOperations) {
         int le = 1;
-        int ri = Arrays.stream(nums)
-                       .max()
-                       .getAsInt();
+        int ri = 0;
+        for (int num : nums) {
+            ri = Math.max(ri, num);
+        }
         int res = 0;
         while (le <= ri) {
             int y = (le + ri) >>> 1;
