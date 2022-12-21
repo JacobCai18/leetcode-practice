@@ -14,34 +14,18 @@ public class Lc567 {
         le = ri = 0;
         pFreq = new int[26];
         winFreq = new int[26];
-        for (char c : pattern) {
-            pFreq[c - 'a']++;
-        }
+        for (char c : pattern) pFreq[c - 'a']++;
         for (int freq : pFreq) {
-            if (freq > 0) {
-                pCount++;
-            }
+            if (freq > 0) pCount++;
         }
         while (ri < tLen) {
-            int riIndex = text[ri] - 'a';
-            if (pFreq[riIndex] > 0) {
-                if (++winFreq[riIndex] == pFreq[riIndex]) {
-                    winCount++;
-                }
-            }
-            ri++;
+            int riIndex = text[ri++] - 'a';
+            if (pFreq[riIndex] > 0 && ++winFreq[riIndex] == pFreq[riIndex]) winCount++;
             // 当 text 窗口中出现的字符中包含全部 pattern 数组中出现的字符，并且对应字符的频数相同时，移动左指针
             while (winCount == pCount) {
-                if (ri - le == pLen) {
-                    return true;
-                }
-                int leIndex = text[le] - 'a';
-                if (pFreq[leIndex] > 0) {
-                    if (--winFreq[leIndex] < pFreq[leIndex]) {
-                        winCount--;
-                    }
-                }
-                le++;
+                if (ri - le == pLen) return true;
+                int leIndex = text[le++] - 'a';
+                if (pFreq[leIndex] > 0 && --winFreq[leIndex] < pFreq[leIndex]) winCount--;
             }
         }
         return false;
