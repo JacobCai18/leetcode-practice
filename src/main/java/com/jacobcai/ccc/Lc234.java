@@ -10,17 +10,17 @@ public class Lc234 {
         // 判断是否回文
         ListNode n1 = head;
         ListNode n2 = tail;
-        boolean result = true;
-        while (result && n2 != null) {
+        boolean isPalindrome = true;
+        while (isPalindrome && n2 != null) {
             if (n1.val != n2.val) {
-                result = false;
+                isPalindrome = false;
             }
             n1 = n1.next;
             n2 = n2.next;
         }
         // 还原链表并返回结果
         mid.next = reverseList(tail);
-        return result;
+        return isPalindrome;
     }
     
     private ListNode reverseList(ListNode head) {
