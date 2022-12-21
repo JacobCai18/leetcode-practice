@@ -22,12 +22,12 @@ public class Lc654 {
                 max = i;
             }
         }
-        TreeNode head = new TreeNode(nums[max]);
-        head.left = helper(le,
+        TreeNode root = new TreeNode(nums[max]);
+        root.left = helper(le,
                            max - 1);
-        head.right = helper(max + 1,
+        root.right = helper(max + 1,
                             ri);
-        return head;
+        return root;
     }
     
     public static void main(String[] args) {
