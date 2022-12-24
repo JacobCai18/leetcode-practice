@@ -16,7 +16,7 @@ public class Lc692 {
         for (Map.Entry<String, Integer> entry : cnt.entrySet()) {
             res.add(entry.getKey());
         }
-        res.sort((word1, word2) -> cnt.get(word1) == cnt.get(word2) ?
+        res.sort((word1, word2) -> cnt.get(word1).equals(cnt.get(word2)) ?
                                    word1.compareTo(word2) :
                                    cnt.get(word2) - cnt.get(word1));
         return res.subList(0, k);
