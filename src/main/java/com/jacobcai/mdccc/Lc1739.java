@@ -9,9 +9,8 @@ public class Lc1739 {
         }
         cur = 1;
         while (cur < n) {
-            n -= cur;
+            n -= cur++;
             j++;
-            cur++;
         }
         return (i - 1) * i / 2 + j;
     }
