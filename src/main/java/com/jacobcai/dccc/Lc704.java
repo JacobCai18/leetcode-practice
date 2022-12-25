@@ -6,15 +6,15 @@ public class Lc704 {
         int le, ri;
         le = 0;
         ri = nums.length - 1;
-        // [le,mid),mid,(mid,ri]
+        // [le, mid), mid, (mid, ri]
         while (le <= ri) {
             int mid = (le + ri) >>> 1;
             if (target == nums[mid]) {
                 return mid;
-            } else if (target < nums[mid]) {
-                ri = mid - 1;
-            } else {
+            } else if (nums[mid] < target) {
                 le = mid + 1;
+            } else {
+                ri = mid - 1;
             }
         }
         return -1;

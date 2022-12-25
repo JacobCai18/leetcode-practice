@@ -3,11 +3,11 @@ package com.jacobcai.c;
 public class Lc33 {
     public int search(int[] nums,
                       int target) {
-        int le, ri, mid;
+        int le, ri;
         le = 0;
         ri = nums.length - 1;
         while (le <= ri) {
-            mid = (le + ri) >>> 1;
+            int mid = (le + ri) >>> 1;
             if (nums[mid] == target) {
                 return mid;
             }

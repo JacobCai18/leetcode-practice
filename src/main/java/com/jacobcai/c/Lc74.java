@@ -12,12 +12,12 @@ public class Lc74 {
         while (le <= ri) {
             int mid = (le + ri) >>> 1;
             int val = matrix[mid / colLen][mid % colLen];
-            if (target == val) {
+            if (val == target) {
                 return true;
-            } else if (target < val) {
-                ri = mid - 1;
-            } else {
+            } else if (val < target) {
                 le = mid + 1;
+            } else {
+                ri = mid - 1;
             }
         }
         return false;

@@ -16,10 +16,10 @@ public class Lc34 {
         // [le,mid], (mid,ri]
         while (le < ri) {
             int mid = (le + ri) >>> 1;
-            if (target <= nums[mid]) {
-                ri = mid;
-            } else {
+            if (nums[mid] < target) {
                 le = mid + 1;
+            } else {
+                ri = mid;
             }
         }
         if (nums[le] != target) {
@@ -32,10 +32,10 @@ public class Lc34 {
         // [le, mid), [mid, ri]
         while (le < ri) {
             int mid = (le + ri + 1) >>> 1;
-            if (target < nums[mid]) {
-                ri = mid - 1;
-            } else {
+            if (nums[mid] <= target) {
                 le = mid;
+            } else {
+                ri = mid - 1;
             }
         }
         res[1] = le;

@@ -3,19 +3,18 @@ package com.jacobcai.c;
 public class Lc35 {
     public int searchInsert(int[] nums,
                             int target) {
-        int le, ri, mid;
+        int le, ri;
         le = 0;
         ri = nums.length - 1;
-        if (target > nums[ri]) {
-            return nums.length;
-        }
-        // [le, mid], (mid, ri]
-        while (le < ri) {
-            mid = (le + ri) >>> 1;
-            if (target <= nums[mid]) {
-                ri = mid;
-            } else {
+        // [le, mid), mid, (mid, ri]
+        while (le <= ri) {
+            int mid = (le + ri) >>> 1;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
                 le = mid + 1;
+            } else {
+                ri = mid - 1;
             }
         }
         return le;
