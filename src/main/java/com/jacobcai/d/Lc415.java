@@ -8,7 +8,7 @@ public class Lc415 {
         j = num2.length() - 1;
         c = 0;
         StringBuilder sb = new StringBuilder();
-        while (i >= 0 || j >= 0) {
+        while (i >= 0 || j >= 0 || c != 0) {
             int x = i >= 0 ?
                     num1.charAt(i--) - '0' :
                     0;
