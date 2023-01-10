@@ -6,7 +6,7 @@ public class Lc05 {
         int ri = 0;
         int len = 1;
         for (int i = 0; i < s.length(); i++) {
-            int len1, len2, curr;
+            int len1, len2, curLen;
             // 以一个char为中心
             len1 = expandFromMid(i,
                                  i,
@@ -15,9 +15,9 @@ public class Lc05 {
             len2 = expandFromMid(i,
                                  i + 1,
                                  s);
-            if (len < (curr = Math.max(len1,
+            if (len < (curLen = Math.max(len1,
                                        len2))) {
-                len = curr;
+                len = curLen;
                 // 记录此时的左右，便于返回子串
                 ri = i + len / 2;
                 le = ri - len + 1;

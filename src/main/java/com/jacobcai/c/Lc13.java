@@ -2,17 +2,15 @@ package com.jacobcai.c;
 
 public class Lc13 {
     public int romanToInt(String s) {
-        if (s.length() == 1) {
+        if (s.length() == 1)
             return getVal(s.charAt(0));
-        }
         int p = s.length() - 2;
         int res = getVal(s.charAt(p + 1));
         while (p > -1) {
-            if (getVal(s.charAt(p)) < getVal(s.charAt(p + 1))) {
+            if (getVal(s.charAt(p)) < getVal(s.charAt(p + 1)))
                 res -= getVal(s.charAt(p));
-            } else {
+            else
                 res += getVal(s.charAt(p));
-            }
             p--;
         }
         return res;

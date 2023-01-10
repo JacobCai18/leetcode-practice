@@ -17,16 +17,10 @@ public class Lc1_1 {
     }
     
     public static void main(String[] args) {
-        Lc1_1 solutions = new Lc1_1();
+        Lc1_1 lc1_1 = new Lc1_1();
         int[] nums = {2, 7, 9, 3, 5, 4};
         int target = 6;
-/*
-        for (int element :
-                solutions.twoSum1(nums, target)) {
-            System.out.println(element);
-        }
-*/
-        int[] res = solutions.twoSum(nums,
+        int[] res = lc1_1.twoSum(nums,
                                      target);
         System.out.println(Arrays.toString(res));
     }

@@ -22,6 +22,11 @@ public class Lc04 {
         }
     }
     
+    /**
+     * @param k 两数组拼接排序后的下标
+     *
+     * @return k 下标上的值
+     */
     public int getK(int k) {
         int i1, i2;
         i1 = i2 = 0;

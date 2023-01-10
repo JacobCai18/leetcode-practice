@@ -2,19 +2,19 @@ package com.jacobcai.c;
 
 public class Lc03 {
     public int lengthOfLongestSubstring(String s) {
-        int maxLen, le, ri;
+        int maxLen, le;
         maxLen = 0;
-        le = ri = 0;
-        // ASCII有128个字符
-        // 记录right所指的字符所对应的备选left
+        le = 0;
+        // ASCII 有 128 个字符
+        // <字符, 出现时的下标 + 1>
         int[] map = new int[128];
-        // right走到头就结束
-        for (; ri < s.length(); ri++) {
+        // ri 走到头就结束
+        for (int ri = 0; ri < s.length(); ri++) {
             char c;
-            // left不回头
+            // le 不回头
             le = Math.max(le,
-                            map[c = s.charAt(ri)]);
-            // 下次遇到相同c的备选left
+                          map[c = s.charAt(ri)]);
+            // 下次遇到相同 c 的备选 le
             map[c] = ri + 1;
             maxLen = Math.max(maxLen,
                               ri - le + 1);

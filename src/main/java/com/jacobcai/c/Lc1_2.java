@@ -20,10 +20,10 @@ public class Lc1_2 {
     }
     
     public static void main(String[] args) {
-        Lc1_2 twoSumDemo = new Lc1_2();
+        Lc1_2 lc1_2 = new Lc1_2();
         int[] nums = {2, 7, 9, 3, 5, 4};
         int target = 6;
-        Arrays.stream(twoSumDemo.twoSum(nums,
+        Arrays.stream(lc1_2.twoSum(nums,
                                         target))
               .forEach(System.out::println);
     }
