@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lc21 {
-    public ListNode mergeTwoLists(ListNode list1,
-                                  ListNode list2) {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode prev, dummy;
         prev = dummy = new ListNode();
         while (list1 != null && list2 != null) {
@@ -22,26 +21,19 @@ public class Lc21 {
             prev = prev.next;
         }
         // 其中一条链表走到头，prev.next接另一条链表
-        prev.next = list1 == null ?
-                    list2 :
-                    list1;
+        prev.next = list1 == null ? list2 : list1;
         return dummy.next;
     }
     
     public static void main(String[] args) {
         ListNode n3 = new ListNode(4);
-        ListNode n2 = new ListNode(2,
-                                   n3);
-        ListNode l1 = new ListNode(1,
-                                   n2);
+        ListNode n2 = new ListNode(2, n3);
+        ListNode l1 = new ListNode(1, n2);
         ListNode node3 = new ListNode(4);
-        ListNode node2 = new ListNode(3,
-                                      node3);
-        ListNode l2 = new ListNode(1,
-                                   node2);
+        ListNode node2 = new ListNode(3, node3);
+        ListNode l2 = new ListNode(1, node2);
         Lc21 lc21 = new Lc21();
-        ListNode resHead = lc21.mergeTwoLists(l1,
-                                              l2);
+        ListNode resHead = lc21.mergeTwoLists(l1, l2);
         List<Integer> res = new ArrayList<>();
         while (resHead != null) {
             res.add(resHead.val);
