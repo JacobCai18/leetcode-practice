@@ -5,18 +5,13 @@ import com.jacobcai.ListNode;
 import java.util.ArrayList;
 
 public class Lc25 {
-    public ListNode reverseKGroup(ListNode head,
-                                  int k) {
+    public ListNode reverseKGroup(ListNode head, int k) {
         ListNode prev, tail, dummy;
-        prev = tail = dummy = new ListNode(0,
-                                           head);
+        prev = tail = dummy = new ListNode(0, head);
         while (tail.next != null) {
-            for (int i = 0; i < k && tail != null; i++) {
+            for (int i = 0; i < k && tail != null; i++)
                 tail = tail.next;
-            }
-            if (tail == null) {
-                break;
-            }
+            if (tail == null) break;
             ListNode curr = prev.next;
             ListNode next = tail.next;
             tail.next = null;
@@ -44,17 +39,12 @@ public class Lc25 {
         int k = 2;
         ArrayList<Integer> res = new ArrayList<>();
         n5 = new ListNode(5);
-        n4 = new ListNode(4,
-                          n5);
-        n3 = new ListNode(3,
-                          n4);
-        n2 = new ListNode(2,
-                          n3);
-        n1 = new ListNode(1,
-                          n2);
+        n4 = new ListNode(4, n5);
+        n3 = new ListNode(3, n4);
+        n2 = new ListNode(2, n3);
+        n1 = new ListNode(1, n2);
         Lc25 lc25 = new Lc25();
-        r = lc25.reverseKGroup(n1,
-                               k);
+        r = lc25.reverseKGroup(n1, k);
         while (r != null) {
             res.add(r.val);
             r = r.next;
