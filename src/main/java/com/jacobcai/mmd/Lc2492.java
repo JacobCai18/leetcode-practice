@@ -22,7 +22,7 @@ public class Lc2492 {
         for (int i = 0; i <= n; i++) uf[i] = i;
         for (int[] r : roads) merge(r[0], r[1]);
         for (int[] r : roads)
-            if (isConnected(r[0], 1) || isConnected(r[1], 1))
+            if (isConnected(r[0], 1))
                 min = Math.min(min, r[2]);
         return min;
     }
