@@ -6,7 +6,7 @@ public class Lc1663 {
         int a = n - z;
         StringBuilder sb = new StringBuilder();
         sb.append("a".repeat(Math.max(0, a - 1)));
-        if (a > 0) sb.append('a' + (k - n) % 25);
+        if (a > 0) sb.append((char) ('a' + (k - n) % 25));
         sb.append("z".repeat(Math.max(0, z)));
         return sb.toString();
     }
