@@ -10,7 +10,7 @@ public class Lc2542 {
         for (int i = 0; i < n; i++) idxs[i] = i;
         Arrays.sort(idxs, (a, b) -> nums2[b] - nums2[a]);
         long sm = 0;
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>(); // 初始化空间后会增加内存消耗
         for (int i = 0; i < k; i++) {
             int n1 = nums1[idxs[i]];
             pq.offer(n1);
@@ -19,10 +19,12 @@ public class Lc2542 {
         long res = sm * nums2[idxs[k - 1]];
         for (int i = k; i < n; i++) {
             int j = idxs[i];
-            pq.offer(nums1[j]);
-            sm += nums1[j];
-            sm -= pq.poll();
-            res = Math.max(res, sm * nums2[j]);
+            if (nums1[j] > pq.peek()) {
+                sm -= pq.poll();
+                pq.offer(nums1[j]);
+                sm += nums1[j];
+                res = Math.max(res, sm * nums2[j]);
+            }
         }
         return res;
     }
