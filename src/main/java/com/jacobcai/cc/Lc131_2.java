@@ -6,52 +6,37 @@ import java.util.Deque;
 import java.util.List;
 
 public class Lc131_2 {
-    List<List<String>> res;
-    Deque<String> stack;
-    int len;
-    String s;
-    boolean[][] dp;
-    
-    public List<List<String>> partition(String s) {
-        res = new ArrayList<>();
-        stack = new ArrayDeque<>();
-        len = s.length();
-        this.s = s;
-        // dp[le][ri] == true: 当前le到ri的子串是回文串
-        dp = new boolean[len][len];
-        for (int i = 0; i < len; i++) {
-            expendFromMid(i,
-                          i);
-            expendFromMid(i,
-                          i + 1);
-        }
-        backtrack(0);
-        return res;
+    private void expendFromMid(String s, boolean[][] dp, int le, int ri) {
+        while (le >= 0 && ri < s.length() && s.charAt(le) == s.charAt(ri)) dp[le--][ri++] = true;
     }
-    
-    private void expendFromMid(int le,
-                               int ri) {
-        while (le >= 0 && ri < len && s.charAt(le) == s.charAt(ri)) {
-            dp[le][ri] = true;
-            le--;
-            ri++;
-        }
-    }
-    
-    private void backtrack(int le) {
-        if (le == len) {
+
+    private void backtrack(String s, List<List<String>> res, Deque<String> stack, boolean[][] dp, int le) {
+        if (le == s.length()) {
             res.add(new ArrayList<>(stack));
             return;
         }
-        for (int ri = le; ri < len; ri++) {
+        for (int ri = le; ri < s.length(); ri++) {
             if (dp[le][ri]) {
                 stack.addLast(s.substring(le, ri + 1));
-                backtrack(ri + 1);
+                backtrack(s, res, stack, dp, ri + 1);
                 stack.removeLast();
             }
         }
     }
-    
+
+    public List<List<String>> partition(String s) {
+        List<List<String>> res = new ArrayList<>();
+        Deque<String> stack = new ArrayDeque<>();
+        int n = s.length();
+        boolean[][] dp = new boolean[n][n]; // dp[le][ri] == true: 当前le到ri的子串是回文串
+        for (int i = 0; i < n; i++) {
+            expendFromMid(s, dp, i, i);
+            expendFromMid(s, dp, i, i + 1);
+        }
+        backtrack(s, res, stack, dp, 0);
+        return res;
+    }
+
     public static void main(String[] args) {
         String s = "aab";
         Lc131_2 lc131_2 = new Lc131_2();
