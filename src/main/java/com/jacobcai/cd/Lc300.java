@@ -2,22 +2,19 @@ package com.jacobcai.cd;
 
 public class Lc300 {
     public int lengthOfLIS(int[] nums) {
-        int len = nums.length;
-        int[] dp = new int[len];
+        int n = nums.length, mx = 1;
+        int[] dp = new int[n];
         dp[0] = 1;
-        int max = 1;
-        for (int i = 1; i < len; i++) {
-            dp[i] = 1;
-            for (int j = 0; j < i; j++) {
-                if (nums[i] > nums[j]) {
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
-                }
-            }
-            max = Math.max(max, dp[i]);
+        for (int j = 1; j < n; j++) {
+            dp[j] = 1;
+            for (int i = 0; i < j; i++)
+                if (nums[i] < nums[j])
+                    dp[j] = Math.max(dp[j], dp[i] + 1);
+            mx = Math.max(mx, dp[j]);
         }
-        return max;
+        return mx;
     }
-    
+
     public static void main(String[] args) {
         int[] nums = {10, 9, 2, 5, 3, 7, 101, 18};
         Lc300 lc300 = new Lc300();
